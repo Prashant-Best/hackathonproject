@@ -1,1 +1,56 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carbon Footprint Calculator</title>
+<style>
+    body{
+        background-color:rgb(220, 243, 220);
+    }
+    h1{
+        font-size: 150%;
+    }
+    label{
+        font-size: 200%;
+    }
+    #cartype{
+        font-size: 200%;
+    }
+</style>
+</head>
+<body>
+    <h1>Carbon Footprint Calculator</h1>
+    <label for="miles">Miles Driven:</label>
+    <input type="number" id="miles" placeholder="Enter miles driven">
+    <br>
+    <label for="carType">Car Type:</label>
+    <select id="carType">
+        <option value="small">Small Car</option>
+        <option value="medium">Medium Car</option>
+        <option value="SUV">SUV</option>
+    </select>
+    <br>
+    <button onclick="calculateCarbonFootprint()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateCarbonFootprint() {
+            var milesDriven = parseFloat(document.getElementById("miles").value);
+            var carType = document.getElementById("carType").value;
+            var emissionsPerMile = 0;
+
+            // Define emissions per mile based on car type
+            if (carType === "small") {
+                emissionsPerMile = 120;
+            } else if (carType === "medium") {
+                emissionsPerMile = 150;
+            } else if (carType === "SUV") {
+                emissionsPerMile = 200;
+            }
+
+            var totalEmissions = milesDriven * emissionsPerMile;
+            document.getElementById("result").innerHTML = "Carbon footprint: " + totalEmissions + " grams of CO2";
+        }
+    </script>
+</body>
+</html>
